@@ -1,20 +1,19 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import styles from "./NavLink.module.css";
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-type NavItemProps={
-  text: string;
+import styles from './NavLink.module.css';
+
+type NavItemProps = {
   href: string;
-}
-export default function NavItem({
-  text,
-  href,
-}: NavItemProps) {
+  text: string;
+};
+export default function NavItem({ href, text }: NavItemProps) {
   const pathname = usePathname();
-  const style =
-    pathname === href ? `${styles.link} ${styles.hoverLink}` : `${styles.link}`;
-    
+  const style = pathname === href ?
+  `${styles.link} ${styles.hoverLink}` :
+  `${styles.link}`;
+
   return (
     <Link className={style} href={href}>
       {text}

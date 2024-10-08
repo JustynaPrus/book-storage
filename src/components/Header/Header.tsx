@@ -1,21 +1,21 @@
-import NavLink from "../NavLink/NavLink";
+import NavLink from '../NavLink/NavLink';
 
 const MENU_LIST = [
-  { text: "Home", href: "/" },
-//   { text: "Sign up", href: "/auth/signup/" },
-//   { text: "Sign in", href: "/auth/signin/" },
-  { text: "Products", href: "/products" },
-  { text: "Blog", href: "/blog" },
-  { text: "Busket", href: "/busket" },
-  { text: "Order", href: "/order" },
-  { text: "Profile", href: "/profile" },
+  { href: '/', text: 'Home' },
+  //   { text: "Sign up", href: "/auth/signup/" },
+  //   { text: "Sign in", href: "/auth/signin/" },
+  { href: '/products', text: 'Products' },
+  { href: '/blog', text: 'Blog' },
+  { href: '/basket', text: 'Basket' },
+  { href: '/order', text: 'Order' },
+  { href: '/profile', text: 'Profile' },
 ];
 
 export default function Header() {
   return (
     <nav>
       {MENU_LIST.map((link) => (
-        <NavLink text={link.text} href={link.href} key={link.text} />
+        <NavLink key={link.text} href={link.href} text={link.text} />
       ))}
     </nav>
   );

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "About shop",
-  description: "The shop to buy ebooks",
+  description: 'The shop to buy ebooks',
+  title: 'About shop',
 };
 
 export default function Blog() {

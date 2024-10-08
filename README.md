@@ -35,7 +35,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## 
+##
 
 Projekt to aplikacja internetowa sprzedająca ebooki lub inne pliki wysyłane mailowo na adres email kupującego.
 
@@ -50,15 +50,18 @@ Projekt to aplikacja internetowa sprzedająca ebooki lub inne pliki wysyłane ma
 7. Ekran profilu użytkownika - możliwość podglądu zamówień.
 
 ## Wymagania funkcjonalne:
+
 - wsparcie dla wielojęzyczności,
 - baza danych do przechowywania produktów i kategorii np. supabase, firebase, postgreSql, mongoDb,
 - użycie storage na pliki produktów (sugerowane Amazon S3, google cloud storage),
 - użycie providera do wysyłki wiadomości e-mail (sugerowane Sendgrid, nodemailer, amazon SES),
 
 - panel administratora z możliwościami:
+
 * dodawanie, usuwanie i edycja produktów, produkt posiada pola: cena, nazwa, opis, kategoria, zdjęcie promocyjne, plik produktu,
 * dodawanie, usuwanie i edycja kategorii, kategoria posiada pole nazwy,
 * podgląd kontaktów zapisanych do newslettera,
+
 - tworzenie obrazów dockerowych aplikacji,
 - automatyzacja budowania obrazów na github action po merge do mastera i wrzucenie obrazu na repo dockerowe z githuba,
 - posty na bloga zaczytują się z zewnątrz np. wordpress, strapi, sanity, storyblock,

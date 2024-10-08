@@ -5,10 +5,10 @@ export const metadata: Metadata = {
   title: 'About shop',
 };
 
-export default function Products() {
+export default function Basket() {
   return (
     <main>
-      <p>Products page</p>
+      <p>Basket</p>
     </main>
   );
 }
