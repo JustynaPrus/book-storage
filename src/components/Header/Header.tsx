@@ -1,22 +1,42 @@
+'use client';
+
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { Avatar, Stack } from '@mui/material';
+
 import NavLink from '../NavLink/NavLink';
+
+import UserDropDown from './components/UserDropDown';
+
+import styles from './Header.module.scss';
 
 const MENU_LIST = [
   { href: '/', text: 'Home' },
-  //   { text: "Sign up", href: "/auth/signup/" },
-  //   { text: "Sign in", href: "/auth/signin/" },
   { href: '/products', text: 'Products' },
   { href: '/blog', text: 'Blog' },
-  { href: '/basket', text: 'Basket' },
   { href: '/order', text: 'Order' },
-  { href: '/profile', text: 'Profile' },
 ];
 
 export default function Header() {
   return (
-    <nav>
-      {MENU_LIST.map((link) => (
-        <NavLink key={link.text} href={link.href} text={link.text} />
-      ))}
+    <nav className={styles.navigation}>
+      <Stack alignItems='center' direction='row' justifyContent='space-between'>
+        <Stack alignItems='center' direction='row' spacing={1}>
+          <h1>BookStorage</h1>
+          {MENU_LIST.map((link) => (
+            <NavLink key={link.text} color='black' href={link.href}>
+              {link.text}
+            </NavLink>
+          ))}
+        </Stack>
+        <Stack alignItems='center' direction='row' spacing={1}>
+          <Avatar className={styles['avatarIcon']}>
+            <NavLink key='basket' color='white' href='/basket'>
+              <ShoppingBasketIcon />
+            </NavLink>
+          </Avatar>
+          <UserDropDown />
+        </Stack>
+      </Stack>
     </nav>
   );
 }
