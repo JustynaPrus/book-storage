@@ -1,22 +1,19 @@
 'use client';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { ReactElement } from 'react';
+import Link from '@mui/material/Link';
 
-import styles from './NavLink.module.css';
+import styles from './NavLink.module.scss';
 
 type NavItemProps = {
+  children?: string | ReactElement;
+  color: string;
   href: string;
-  text: string;
 };
-export default function NavItem({ href, text }: NavItemProps) {
-  const pathname = usePathname();
-  const style = pathname === href ?
-  `${styles.link} ${styles.hoverLink}` :
-  `${styles.link}`;
 
+export default function NavItem({ children, color, href }: NavItemProps) {
   return (
-    <Link className={style} href={href}>
-      {text}
+    <Link className={styles['link']} color={color} href={href} underline='none'>
+      {children}
     </Link>
   );
 }

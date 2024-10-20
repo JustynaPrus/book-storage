@@ -1,0 +1,10 @@
+.link {
+  padding: 10px;
+  font-weight: bold;
+
+  &:hover {
+    color: white;
+    background-color: cadetblue;
+    border-radius: 5px;
+  }
+}
