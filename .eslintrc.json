@@ -74,7 +74,6 @@
         "varsIgnorePattern": "^_"
       }
     ],
-    "multiline-ternary": "error",
     "no-unused-vars": "error",
     "no-use-before-define": "error",
     "no-magic-numbers": "error",
@@ -87,7 +86,6 @@
         "shorthandFirst": true,
         "multiline": "last",
         "ignoreCase": true,
-        "noSortAlphabetically": false,
         "reservedFirst": ["key"],
         "locale": "auto"
       }

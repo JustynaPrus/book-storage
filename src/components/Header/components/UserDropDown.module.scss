@@ -1,20 +1,16 @@
-.button {
-  padding: 0 24px;
-  border: none;
-}
-
 .avatarIcon {
   background-color: cadetblue;
 }
 
 .menuItem {
   list-style: none;
-  padding: 14px;
+  padding: 8px;
   text-align: center;
+  background-color: gray;
 }
 
 .menu {
-  margin-top: 5px;
-  background-color: lightgrey;
+  position: fixed;
+  margin-top: 8px;
   border-radius: 5px;
 }

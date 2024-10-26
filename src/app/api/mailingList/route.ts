@@ -1,15 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 type Data = {
   mail: string;
 };
 
-export async function POST(request: Request) {
-  
-  if(!process.env.SENDGRID_MAILING_ID || !process.env.SENDGRID_API_KEY){
+export async function POST(request: NextRequest) {
+  if (!process.env.SENDGRID_MAILING_ID || !process.env.SENDGRID_API_KEY) {
     return Response.json({
-      message: 'Oups, there was a problem with your subscription, please try again or contact us',
-    })
+      message: 'Oups, there was an unexpected error, please try again later or contact us',
+    });
   }
 
   const reqData = (await request.json()) as Data;
@@ -32,10 +31,18 @@ export async function POST(request: Request) {
   try {
     const response = await fetch(url, options);
     const responseData = await response.json();
+    
     if (responseData.errors) {
-      return NextResponse.json(responseData, { status: 500 });
+      return NextResponse.json(responseData, {
+        status: 500,
+        statusText:
+          'Oups, there was a problem with your subscription, please try again or contact us',
+      });
     } else {
-      return NextResponse.json(responseData, { status: 200 })
+      return NextResponse.json(responseData, {
+        status: 200,
+        statusText: 'Your email has been succesfully added to the mailing list. Welcome!',
+      });
     }
   } catch (err) {
     return NextResponse.json(err, { status: 500 });

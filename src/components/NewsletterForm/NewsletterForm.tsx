@@ -1,67 +1,51 @@
 'use client';
 
-import { useState } from 'react';
-import axios from 'axios';
+import { useRef } from 'react';
+import { Button, FormControl, Input, Stack } from '@mui/material';
 
-import { STATUS_200 } from '@/constant/constant';
+import { useData } from '../../hooks/useData';
+
+import styles from './NewsletterForm.module.scss';
 
 export function NewsletterForm() {
-  const [mail, setMail] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState<boolean>();
-  const [messageState, setMessageState] = useState('');
+  const ref = useRef<HTMLFormElement>(null);
+  const { handleSubscribe, loading, message, setMail, success } = useData();
 
-  const Subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    axios
-      .post('/api/mailingList', {
-        mail: mail,
-      })
-      .then((res) => {
-        if (res.status === STATUS_200) {
-          setLoading(false);
-          setSuccess(true);
-          setMessageState(res.data.message);
-        } else {
-          setLoading(false);
-          setMessageState(res.data.message);
-        }
-      })
-      .catch((err) => {
-        setLoading(false);
-        setMessageState(String(err.message));
-      });
+    handleSubscribe().then(() => ref.current?.reset());
   };
 
   return (
-    <div>
-      <div>
-        <h3>Join my newsletter</h3>
-        <p>Stay up to date with our latest news and products.</p>
-      </div>
-
-      <form onSubmit={Subscribe}>
-        <div>
-          <input
+    <Stack alignItems='center' direction='column'>
+      <h3>Join my newsletter</h3>
+      <form ref={ref} onSubmit={handleSubmit}>
+        <FormControl>
+          <label htmlFor='email'>Stay up to date with our latest news and products.</label>
+          <Input
+            error
             required
             autoComplete='email'
             placeholder='Your email address'
             type='email'
+            inputProps={{
+              pattern: '^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$',
+              type: 'email',
+            }}
             onChange={(e) => setMail(e.target.value)}
           />
-
-          <button disabled={loading} type='submit'>
-            {!loading ?
-            <p>SUBSCRIBE</p> :
-            <div>loading... icon</div>}
-          </button>
-        </div>
-
-        {success ?
-        <p>{messageState}</p> :
-        <p>{messageState}</p>}
+          <Button
+            className={styles['formButton']}
+            disabled={loading}
+            size='small'
+            type='submit'
+            variant='contained'
+          >
+            SUBSCRIBE
+          </Button>
+        </FormControl>
       </form>
-    </div>
+      {!loading && <p className={success ? styles.success : styles.failure}>{message}</p>}
+    </Stack>
   );
 }

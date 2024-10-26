@@ -1,9 +1,11 @@
+@import '../../styles/variables.module.scss';
+
 .link {
   padding: 10px;
   font-weight: bold;
 
   &:hover {
-    color: white;
+    color: $mainColor;
     background-color: cadetblue;
     border-radius: 5px;
   }
