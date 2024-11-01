@@ -60,7 +60,6 @@ Projekt to aplikacja internetowa sprzedająca ebooki lub inne pliki wysyłane ma
 
 * dodawanie, usuwanie i edycja produktów, produkt posiada pola: cena, nazwa, opis, kategoria, zdjęcie promocyjne, plik produktu,
 * dodawanie, usuwanie i edycja kategorii, kategoria posiada pole nazwy,
-* podgląd kontaktów zapisanych do newslettera,
 
 - tworzenie obrazów dockerowych aplikacji,
 - automatyzacja budowania obrazów na github action po merge do mastera i wrzucenie obrazu na repo dockerowe z githuba,

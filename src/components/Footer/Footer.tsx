@@ -1,10 +1,11 @@
-import styles from './Footer.module.css';
+import { NewsletterForm } from '../NewsletterForm/NewsletterForm';
+
+import styles from './Footer.module.scss';
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <p>Formularz do wysyłki newslettera </p>
-      <p>...</p>
+      <NewsletterForm />
     </footer>
   );
 }
